@@ -32,7 +32,7 @@ function App() {
     setSortOrder('default')
   }
 
-  const filteredProducts = products
+  const filteredProducts = [...products]
     .filter((product) => {
       const matchesSearch = product.title
         .toLowerCase()
@@ -47,6 +47,10 @@ function App() {
       if (sortOrder === 'high') return second.price - first.price
       return 0
     })
+
+  useEffect(() => {
+    document.title = `CvSU Mini Store (${filteredProducts.length} results)`
+  }, [filteredProducts.length])
 
   return (
     <main className="catalog">

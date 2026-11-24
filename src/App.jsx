@@ -71,21 +71,31 @@ function App() {
         onClearFilters={clearFilters}
       />
 
-      <section className="catalog__grid">
-        {filteredProducts.map((product) => (
-          <ProductCard
-            key={product.id}
-            title={product.title}
-            price={product.price}
-            category={product.category}
-            inStock={product.inStock}
-            onAddToCart={handleAddToCart}
-          >
-            {product.id === 2 && <span>Sale</span>}
-            {product.id === 5 && <span>New</span>}
-          </ProductCard>
-        ))}
-      </section>
+      <p className="catalog__result-count" role="status">
+        Showing {filteredProducts.length} of {products.length} products
+      </p>
+
+      {filteredProducts.length === 0 ? (
+        <p className="catalog__empty-state">
+          No products found. Try a different keyword or category.
+        </p>
+      ) : (
+        <section className="catalog__grid">
+          {filteredProducts.map((product) => (
+            <ProductCard
+              key={product.id}
+              title={product.title}
+              price={product.price}
+              category={product.category}
+              inStock={product.inStock}
+              onAddToCart={handleAddToCart}
+            >
+              {product.id === 2 && <span>Sale</span>}
+              {product.id === 5 && <span>New</span>}
+            </ProductCard>
+          ))}
+        </section>
+      )}
     </main>
   )
 }

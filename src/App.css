@@ -392,6 +392,16 @@
   background: var(--accent-bg);
 }
 
+@media (max-width: 900px) {
+  .search-bar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .search-bar__field:first-child {
+    grid-column: 1 / -1;
+  }
+}
+
 @media (max-width: 600px) {
   .catalog {
     padding: 20px 16px;

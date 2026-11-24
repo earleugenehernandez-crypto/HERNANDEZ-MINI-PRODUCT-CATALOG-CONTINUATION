@@ -13,11 +13,11 @@ function App() {
   const [sortOrder, setSortOrder] = useState('default')
 
   useEffect(() => {
-    const timeoutId = setTimeout(() => {
+    const timer = setTimeout(() => {
       setDebouncedSearch(searchText)
     }, 300)
 
-    return () => clearTimeout(timeoutId)
+    return () => clearTimeout(timer)
   }, [searchText])
 
   function handleAddToCart(title) {
